@@ -34,10 +34,10 @@ public class UserApi {
     }
     @Step
     //авторизация пользователя
-    public static Response loginUser(LoginUser credentials){
+    public static Response loginUser(LoginUser loginUser){
         Response response2 = given()
                 .header("Content-type", "application/json")
-                .body(credentials)
+                .body(loginUser)
                 .when().log().all()
                 .post("/api/auth/login");
         return response2;
@@ -46,7 +46,7 @@ public class UserApi {
 
     @Step
     //обновление информации о пользователе
-    public static Response updateUser(String accessToken, LoginUser credentials){
+    public static Response updateUser(String accessToken, User user){
         Response response3 = given()
                 .header("Content-type", "application/json")
                 .header("Authorization", accessToken)
