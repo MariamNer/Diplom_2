@@ -50,6 +50,7 @@ public class UserApi {
         Response response3 = given()
                 .header("Content-type", "application/json")
                 .header("Authorization", accessToken)
+                .body(user)
                 .when().log().all()
                 .patch("/api/auth/user");
         return response3;

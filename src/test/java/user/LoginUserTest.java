@@ -7,7 +7,6 @@ import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import jdk.jfr.Description;
-import org.json.JSONObject;
 import org.junit.After;
 import api.UserApi;
 import org.junit.Test;

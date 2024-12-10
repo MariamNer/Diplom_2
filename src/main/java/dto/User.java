@@ -10,6 +10,15 @@ public class User {
         this.password = password;
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
 
 
