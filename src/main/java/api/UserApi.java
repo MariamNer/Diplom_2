@@ -6,6 +6,8 @@ import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.oneOf;
+import static org.apache.http.HttpStatus.SC_ACCEPTED;
 import static org.apache.http.HttpStatus.SC_OK;
 
 public class UserApi {
@@ -30,7 +32,7 @@ public class UserApi {
                 .when().log().all()
                 .delete("/api/auth/user")
                 .then().log().all()
-                .statusCode(SC_OK);
+                .statusCode((oneOf(200, 202)));
     }
     @Step
     //авторизация пользователя

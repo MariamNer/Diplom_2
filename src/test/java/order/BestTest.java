@@ -1,4 +1,4 @@
-package user;
+package order;
 
 import io.restassured.RestAssured;
 import org.junit.Before;

@@ -11,7 +11,6 @@ import io.restassured.response.Response;
 import jdk.jfr.Description;
 import org.junit.After;
 import org.junit.Test;
-
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 import static org.hamcrest.Matchers.equalTo;
