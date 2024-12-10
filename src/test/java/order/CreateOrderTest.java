@@ -17,7 +17,7 @@ import java.util.Arrays;
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.equalTo;
 
-public class OrderTest extends BestTest{
+public class CreateOrderTest extends BestTest{
 
     private String accessToken;
 
@@ -65,7 +65,7 @@ public class OrderTest extends BestTest{
                         ingredients[Diplom_2_utils.getRandomInt(ingredients.length)].get_id())
                 .toArray(new String[0]);
         Order order = new Order(IdIngridients);
-        Response response1 = OrderApi.createOrderWithAuth("", order);
+        Response response1 = OrderApi.createOrderWithoutAuth(order);
         response1.then().log().all()
                 .assertThat().body("success", equalTo(true))
                 .statusCode(SC_OK);
@@ -78,7 +78,7 @@ public class OrderTest extends BestTest{
     @Step
     public void createOrderWithoutIngredients(){
         Order order = new Order(null);
-        Response response1 = OrderApi.createOrderWithAuth("", order);
+        Response response1 = OrderApi.createOrderWithoutAuth(order);
         response1.then().log().all()
                 .assertThat().body("message", equalTo("Ingredient ids must be provided"))
                 .statusCode(SC_BAD_REQUEST);
