@@ -30,7 +30,7 @@ public class ChangeParametersUserTest extends BestTest {
         Response response1 = UserApi.loginUser(new LoginUser(user.email, user.password));
         response1.then().log().all();
         ResponseUser responseUser = response1.as(ResponseUser.class);
-        String accessToken = responseUser.accessToken;
+        accessToken = responseUser.accessToken;
         User changeUserEmail = new User(user.email + "a", user.password, user.name);
         Response response2 = UserApi.updateUser(accessToken, changeUserEmail);
         response2.then().log().all()
@@ -51,7 +51,7 @@ public class ChangeParametersUserTest extends BestTest {
         Response response1 = UserApi.loginUser(new LoginUser(user.email, user.password));
         response1.then().log().all();
         ResponseUser responseUser = response1.as(ResponseUser.class);
-        String accessToken = responseUser.accessToken;
+        accessToken = responseUser.accessToken;
         User changeUserPassword = new User(user.email, user.password + "a", user.name);
         Response response2 = UserApi.updateUser(accessToken, changeUserPassword);
         response2.then().log().all()
@@ -74,7 +74,7 @@ public class ChangeParametersUserTest extends BestTest {
         Response response1 = UserApi.loginUser(new LoginUser(user.email, user.password));
         response1.then().log().all();
         ResponseUser responseUser = response1.as(ResponseUser.class);
-        String accessToken = responseUser.accessToken;
+        accessToken = responseUser.accessToken;
         User changeUserName = new User(user.email, user.password, user.name + "a");
         Response response2 = UserApi.updateUser(accessToken, changeUserName);
         response2.then().log().all()
@@ -95,7 +95,7 @@ public class ChangeParametersUserTest extends BestTest {
         Response response = UserApi.createUser(user);
         response.then().log().all();
         ResponseUser responseUser = response.as(ResponseUser.class);
-//        String accessToken = responseUser.accessToken;
+        accessToken = responseUser.accessToken;
         User changeUserName = new User(user.email, user.password, user.name + "a");
         Response response2 = UserApi.updateUser("", changeUserName);
         response2.then().log().all()
@@ -114,7 +114,7 @@ public class ChangeParametersUserTest extends BestTest {
         Response response = UserApi.createUser(user);
         response.then().log().all();
         ResponseUser responseUser = response.as(ResponseUser.class);
-//        String accessToken = responseUser.accessToken;
+        accessToken = responseUser.accessToken;
         User changeUserPassword = new User(user.email, user.password + "a", user.name);
         Response response2 = UserApi.updateUser("", changeUserPassword);
         response2.then().log().all()
@@ -134,7 +134,7 @@ public class ChangeParametersUserTest extends BestTest {
         Response response = UserApi.createUser(user);
         response.then().log().all();
         ResponseUser responseUser = response.as(ResponseUser.class);
-//        String accessToken = responseUser.accessToken;
+        accessToken = responseUser.accessToken;
         User changeUserEmail = new User(user.email + "a", user.password, user.name);
         Response response2 = UserApi.updateUser("", changeUserEmail);
         response2.then().log().all()

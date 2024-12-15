@@ -2,6 +2,7 @@ package user;
 
 import api.Diplom_2_utils;
 import api.UserApi;
+import dto.ResponseUser;
 import dto.User;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
@@ -17,9 +18,6 @@ public class CreateUserTest extends BestTest {
 
     private String accessToken;
 
-
-
-
     @Test
     @Description("Создание пользователя")
     @DisplayName("Создание уникального пользователя")
@@ -27,6 +25,8 @@ public class CreateUserTest extends BestTest {
     public void createUniqueUser(){
         User user = Diplom_2_utils.getRandom();
         Response response = UserApi.createUser(user);
+        ResponseUser responseUser = response.as(ResponseUser.class);
+        accessToken = responseUser.accessToken;
         response.then().log().all()
                 .assertThat().body("success", equalTo(true))
                 .statusCode(SC_OK);
@@ -40,6 +40,8 @@ public class CreateUserTest extends BestTest {
     public void beCreateUser(){
         User user = Diplom_2_utils.getRandom();
         Response response = UserApi.createUser(user);
+        ResponseUser responseUser = response.as(ResponseUser.class);
+        accessToken = responseUser.accessToken;
         response.then().log().all()
                 .assertThat().body("success", equalTo(true))
                 .statusCode(SC_OK);

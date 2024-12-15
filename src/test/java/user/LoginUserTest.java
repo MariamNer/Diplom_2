@@ -2,6 +2,7 @@ package user;
 
 import api.Diplom_2_utils;
 import dto.LoginUser;
+import dto.ResponseUser;
 import dto.User;
 import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
@@ -26,6 +27,8 @@ public class LoginUserTest extends BestTest {
     public void loginExistingUser() {
         User user = Diplom_2_utils.getRandom();
         Response response = UserApi.createUser(user);
+        ResponseUser responseUser = response.as(ResponseUser.class);
+        accessToken = responseUser.accessToken;
         response.then().log().all();
         Response response1 = UserApi.loginUser(new LoginUser(user.email, user.password));
         response1.then().log().all()
@@ -40,6 +43,8 @@ public class LoginUserTest extends BestTest {
     public void loginIncorrectLoginAndPassword() {
         User user = Diplom_2_utils.getRandom();
         Response response = UserApi.createUser(user);
+        ResponseUser responseUser = response.as(ResponseUser.class);
+        accessToken = responseUser.accessToken;
         response.then().log().all();
         Response response1 = UserApi.loginUser(new LoginUser(user.email +"a", user.password + "a"));
         response1.then().log().all()
